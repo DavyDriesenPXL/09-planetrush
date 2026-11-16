@@ -14,6 +14,9 @@ namespace PlanetRush.Models
 
         public int LitersOfFuel { get { return Spacecraft.CurrentFuel}; }
 
-
+        public Player()
+        {
+            Spacecraft spacecraft = new();
+        }
     }
 }
