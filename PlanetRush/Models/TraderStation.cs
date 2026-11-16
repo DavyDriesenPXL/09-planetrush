@@ -27,6 +27,8 @@ namespace PlanetRush.Models
             }
         }
 
-
+        public bool HasWarpDriveChargesForSale { get; set; }
+        public int FuelForMetalRate { get; set; }
+        public Planet Planet { get; set; }
     }
 }
