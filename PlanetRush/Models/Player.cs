@@ -16,7 +16,7 @@ namespace PlanetRush.Models
 
         public Player()
         {
-            Spacecraft spacecraft = new();
+            Spacecraft = new();
         }
 
         public void AddFuel(int fuel)
