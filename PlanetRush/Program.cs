@@ -76,6 +76,7 @@ namespace PlanetRush
                 if (isTradingActive)
                 {
                     //TODO: Maak hier een nieuwe object aan van de klasse TraderStation
+                    TraderStation trader = new(planet);
 
                     Console.WriteLine("\nBefore you leave the current star,\nyou visit the local trader station.");
 
@@ -83,6 +84,8 @@ namespace PlanetRush
                     Console.ReadLine();
 
                     //TODO: Roep hier de Visit-methode op van het nieuwe object
+                    trader.Visit(player);
+                    
                 }
 
                 #region ShowMenuChoosePlanet

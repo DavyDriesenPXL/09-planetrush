@@ -18,7 +18,7 @@ namespace PlanetRush.Models
             get { return _desiredMetal; }
             set
             {
-                if (_desiredMetal.Equals(TrilliumAlloys) || _desiredMetal.Equals(RawAetherium))
+                if (value.Equals(TrilliumAlloys) || value.Equals(RawAetherium))
                 {
                     _desiredMetal = value;
                 }
@@ -84,12 +84,12 @@ The station is crawling with robotic servants.
 
                 do
                 {
-                    isCorrect = int.TryParse(Console.ReadLine(), out menuChoice) && (menuChoice == 1 || menuChoice == 2 || menuChoice == 3);
+                    isCorrect = int.TryParse(Console.ReadLine(), out menuChoice) && (menuChoice == 1 || menuChoice == 2);
                     if (!isCorrect)
                     {
                         Console.Write("Choose a valid option instead: ");
                     }
-                } while (!isCorrect && menuChoice != 2);
+                } while (!isCorrect);
 
                 switch (menuChoice)
                 {
