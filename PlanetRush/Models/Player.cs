@@ -8,5 +8,8 @@ namespace PlanetRush.Models
 {
     public class Player
     {
+        public int TonsOfTrilliumAlloys { get; set; }
+        public int TonsOfRawAetherium { get; set; }
+        public Spacecraft Spacecraft { get; set; }
     }
 }
