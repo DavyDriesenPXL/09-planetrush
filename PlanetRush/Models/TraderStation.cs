@@ -27,8 +27,34 @@ namespace PlanetRush.Models
             }
         }
 
+        private Random _rng;
+
         public bool HasWarpDriveChargesForSale { get; set; }
         public int FuelForMetalRate { get; set; }
         public Planet Planet { get; set; }
+
+        public TraderStation(Planet planet)
+        {
+            _rng = new();
+            int chance = _rng.Next(2);
+
+            if(chance == 0)
+            {
+                DesiredMetal = TrilliumAlloys;
+                FuelForMetalRate = _rng.Next(10, 20);
+            }
+            if(chance == 1)
+            {
+                DesiredMetal = RawAetherium;
+                FuelForMetalRate = _rng.Next(2, 7);
+            }
+           
+            if(_rng.Next(1,11) == 1)
+            {
+                HasWarpDriveChargesForSale = true;
+            }
+
+            Planet = planet;
+        }
     }
 }
