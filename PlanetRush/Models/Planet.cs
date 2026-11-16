@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,42 +19,49 @@ namespace PlanetRush.Models
         public bool NeedsNuking { get; set; }
         public int NumberOfLightYearsToReach { get; set; }
 
-        private Random rnd;
+        private Random _rng;
 
-        public double ResourceDensity 
-        { get
-            { return (TonsOfRawAetherium + TonsOfTrilliumAlloys) / 10; }
-        }
-
-        public Planet()
+        public double ResourceDensity
         {
-            
+            get
+            { return (double)(TonsOfRawAetherium + TonsOfTrilliumAlloys) / 10; }
         }
 
         public Planet(int galaxyCode)
         {
-            rnd = new();
-            Radius = rnd.Next(4, 14);
-            Seed = rnd.Next();
+            _rng = new();
+            Radius = _rng.Next(4, 14);
+            Seed = _rng.Next();
             Name = GeneratePlanetCode(galaxyCode);
-            TonsOfRawAetherium = rnd.Next(10, 111);
-            TonsOfTrilliumAlloys = Math.Abs(rnd.Next(-10, 31));
-            NumberOfLightYearsToReach = rnd.Next(5, 21);
+            TonsOfRawAetherium = _rng.Next(10, 111);
+            TonsOfTrilliumAlloys = _rng.Next(-10, 31);
+
+            if (TonsOfTrilliumAlloys < 0)
+            {
+                TonsOfTrilliumAlloys = 0;
+            }
+
+            NumberOfLightYearsToReach = _rng.Next(5, 21);
             ConfigureCorrectOption();
+        }
+
+        public Planet() : this(0)
+        {
+
         }
 
         private void ConfigureCorrectOption()
         {
-            int random = rnd.Next(1, 4);
-            if(random == 1)
+            int random = _rng.Next(3);
+            if (random == 0)
             {
                 NeedsGenestealing = true;
             }
-            else if(random == 2)
+            else if (random == 1)
             {
                 NeedsTerraforming = true;
             }
-            else if(random == 3)
+            else if (random == 2)
             {
                 NeedsNuking = true;
             }
@@ -62,7 +70,7 @@ namespace PlanetRush.Models
         private string GeneratePlanetCode(int galaxyCode = 0)
         {
             string prefix = "";
-            int number = rnd.Next(1000, 10000);
+            int number = _rng.Next(1000, 10000);
 
             string quadrant = "";
             string quadrantPool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -82,12 +90,12 @@ namespace PlanetRush.Models
 
             for (int i = 0; i < 2; i++)
             {
-                int index = rnd.Next(quadrantPool.Length);
+                int index = _rng.Next(quadrantPool.Length);
                 quadrant += quadrantPool[index];
             }
 
             return $"{prefix}-{quadrant}-{number}";
         }
     }
-    }
 }
+
