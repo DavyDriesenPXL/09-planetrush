@@ -17,5 +17,10 @@ namespace PlanetRush.Models
         public bool NeedsGenestealing { get; set; }
         public bool NeedsNuking { get; set; }
         public int NumberOfLightYearsToReach { get; set; }
+
+        public double ResourceDensity 
+        { get
+            { return (TonsOfRawAetherium + TonsOfTrilliumAlloys) / 10; }
+        }
     }
 }
