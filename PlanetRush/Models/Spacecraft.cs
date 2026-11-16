@@ -13,5 +13,14 @@ namespace PlanetRush.Models
         public int CargoCapacity { get; set; }
         public int EngineEfficiency { get; set; }
         public bool HasWarpDriveCharge { get; set; }
+
+        private int _currentFuel;
+
+        public int CurrentFuel
+        {
+            get { return CurrentFuel; }
+            set { CurrentFuel = Math.Min(value,FuelCapacity); }
+        }
+
     }
 }
