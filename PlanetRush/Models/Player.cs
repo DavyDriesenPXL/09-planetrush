@@ -11,5 +11,9 @@ namespace PlanetRush.Models
         public int TonsOfTrilliumAlloys { get; set; }
         public int TonsOfRawAetherium { get; set; }
         public Spacecraft Spacecraft { get; set; }
+
+        public int LitersOfFuel { get { return Spacecraft.CurrentFuel}; }
+
+
     }
 }
