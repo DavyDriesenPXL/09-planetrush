@@ -12,7 +12,7 @@ namespace PlanetRush.Models
         public int TonsOfRawAetherium { get; set; }
         public Spacecraft Spacecraft { get; set; }
 
-        public int LitersOfFuel { get { return Spacecraft.CurrentFuel}; }
+        public int LitersOfFuel { get { return Spacecraft.CurrentFuel; } }
 
         public Player()
         {
@@ -22,6 +22,11 @@ namespace PlanetRush.Models
         public void AddFuel(int fuel)
         {
             Spacecraft.CurrentFuel += fuel;
+        }
+
+        public void TravelLightYears(int lightYears)
+        {
+            Spacecraft.CurrentFuel -= lightYears * Spacecraft.EngineEfficiency;
         }
     }
 }

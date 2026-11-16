@@ -18,8 +18,8 @@ namespace PlanetRush.Models
 
         public int CurrentFuel
         {
-            get { return CurrentFuel; }
-            set { CurrentFuel = Math.Min(value,FuelCapacity); }
+            get { return _currentFuel; }
+            set { _currentFuel = Math.Min(value,FuelCapacity); }
         }
 
         public Spacecraft()
