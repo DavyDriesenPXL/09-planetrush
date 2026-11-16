@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlanetRush.Models
 {
-    internal class Planet
+    public class Planet
     {
     }
 }
