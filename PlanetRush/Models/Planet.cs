@@ -18,9 +18,28 @@ namespace PlanetRush.Models
         public bool NeedsNuking { get; set; }
         public int NumberOfLightYearsToReach { get; set; }
 
+        private Random rnd;
+
         public double ResourceDensity 
         { get
             { return (TonsOfRawAetherium + TonsOfTrilliumAlloys) / 10; }
+        }
+
+        public Planet()
+        {
+            
+        }
+
+        public Planet(int galaxyCode)
+        {
+            rnd = new();
+            Radius = rnd.Next(4, 14);
+            Seed = rnd.Next();
+            Name = GeneratePlanetCode(galaxyCode);
+            TonsOfRawAetherium = rnd.Next(10, 111);
+            TonsOfTrilliumAlloys = Math.Abs(rnd.Next(-10, 31));
+            NumberOfLightYearsToReach = rnd.Next(5, 21);
+            ConfigureCorrectOption();
         }
     }
 }
